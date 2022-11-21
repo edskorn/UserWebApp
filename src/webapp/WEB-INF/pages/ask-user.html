@@ -1,14 +1,29 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html"
+      lang="en">
 <head>
   <meta charset="UTF-8">
   <title></title>
 </head>
 <body>
 <h1>Hey ya!</h1>
-<form action="showDetails" method="get">
-  <input type="text" name="userName" placeholder="Введите имя">
-  <input type="submit">
+<form action="showDetails" modelAttribute="user">
+  <table>
+    <tr>
+      <td>Name</td>
+      <td><input type="text" name="name" placeholder="Введите имя"></td>
+    </tr>
+    <tr>
+      <td>Last Name</td>
+      <td><input type="text" name="lastName" placeholder="Введите lastName"></td>
+    </tr>
+    <tr>
+      <td>Age</td>
+      <td><input type="text" name="age" placeholder="Введите age"></td>
+    </tr>
+    <tr>
+      <td><input type="submit" value="Submit"/></td>
+    </tr>
+  </table>
 </form>
 </body>
 </html>
