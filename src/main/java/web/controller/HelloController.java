@@ -6,6 +6,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import web.model.User;
 import web.service.UserService;
 
@@ -32,8 +33,14 @@ public class HelloController {
 
 	@RequestMapping(value = "/saveUser")
 	public String saveUser(@ModelAttribute("user") User user){
-		userService.saveUser(user.getName(), user.getLastName(), user.getAge());
+		userService.saveUser(user);
 		return "redirect:/";
+	}
+
+	@RequestMapping(value = "/updateUser")
+	public String updateUser(@RequestParam("userId") int userId, ModelMap model){
+		model.addAttribute("user", userService.getUserById(userId));
+		return "add-user";
 	}
 
 

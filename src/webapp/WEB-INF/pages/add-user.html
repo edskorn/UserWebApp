@@ -1,4 +1,4 @@
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html"
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
       lang="en">
 <head>
   <meta charset="UTF-8">
@@ -9,13 +9,16 @@
       color: #276291;
 
     }
+    a {
+      color: white;
+    }
     input[type="button"] {
       cursor: auto;
       text-align: center;
       background: #276291;
       color: white;
       padding: 10px 20px;
-      border-width: 0px;
+      border-width: 0;
       font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
       font-size: 14px;
     }
@@ -25,7 +28,7 @@
       background: #276291;
       color: white;
       padding: 10px 20px;
-      border-width: 0px;
+      border-width: 0;
       font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
       font-size: 14px;
     }
@@ -50,20 +53,21 @@
   </style>
 </head>
 <body>
-<h1>Новый пользователь</h1>
+<h1>Информация о пользователе</h1>
 <form action="saveUser" modelAttribute="user">
+  <input type="hidden" name="id" th:value="${user.getId()}">
   <table>
     <tr>
       <td>Фамилия</td>
-      <td><input type="text" name="lastName" placeholder="Введите фамилию"></td>
+      <td><input type="text" name="lastName" placeholder="Введите фамилию" th:value="${user.getLastName()}"></td>
     </tr>
     <tr>
       <td>Имя</td>
-      <td><input type="text" name="name" placeholder="Введите имя"></td>
+      <td><input type="text" name="name" placeholder="Введите имя" th:value="${user.getName()}"></td>
     </tr>
     <tr>
       <td>Возраст</td>
-      <td><input type="text" name="age" placeholder="Введите возраст"></td>
+      <td><input type="text" name="age" placeholder="Введите возраст" th:value="${user.getAge()}"></td>
     </tr>
   </table>
   <br>

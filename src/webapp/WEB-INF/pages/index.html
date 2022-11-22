@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:form="http://www.springframework.org/tags/form">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Пользователи</title>
@@ -9,13 +9,16 @@
             color: #276291;
 
         }
+        a {
+            color: white;
+        }
         input[type="button"] {
             cursor: auto;
             text-align: center;
             background: #276291;
             color: white;
             padding: 10px 20px;
-            border-width: 0px;
+            border-width: 0;
             font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
             font-size: 14px;
         }
@@ -25,7 +28,7 @@
             background: #276291;
             color: white;
             padding: 10px 20px;
-            border-width: 0px;
+            border-width: 0;
             font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
             font-size: 14px;
         }
@@ -57,12 +60,15 @@
         <th>Фамилия</th>
         <th>Имя</th>
         <th>Возраст</th>
+        <th>Действия</th>
     </tr>
     <tr th:each="user : ${allUsers}">
+
         <td th:text="${user.getId()}"></td>
         <td th:text="${user.getLastName()}"></td>
         <td th:text="${user.getName()}"></td>
         <td th:text="${user.getAge()}"></td>
+        <td><a th:href="@{/updateUser(userId=${user.getId()})}">Изменить</a></td>
     </tr>
 </table>
 <br>

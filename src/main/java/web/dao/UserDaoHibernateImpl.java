@@ -2,7 +2,6 @@ package web.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 import web.model.User;
 import web.util.Util;
 import org.hibernate.Session;
@@ -72,6 +71,22 @@ public class UserDaoHibernateImpl implements UserDao {
     }
 
     @Override
+    public void saveUser(User user) {
+        Transaction transaction = null;
+        Session session = null;
+        try {
+            session = sessionFactory.openSession();
+            transaction = session.beginTransaction();
+            session.saveOrUpdate(user);
+            transaction.commit();
+        } catch (Exception sqlException) {
+            Util.rollbackQuietly(transaction);
+        } finally {
+            Util.closeQuietly(session);
+        }
+    }
+
+    @Override
     public void removeUserById(long id) {
         Transaction transaction = null;
         Session session = null;
@@ -119,6 +134,7 @@ public class UserDaoHibernateImpl implements UserDao {
         }
     }
 
+    @Override
     public User getUserById(long id) {
         User user = null;
         Transaction transaction = null;
