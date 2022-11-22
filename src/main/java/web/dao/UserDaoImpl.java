@@ -15,20 +15,6 @@ public class UserDaoImpl implements UserDao {
     public UserDaoImpl() {
 
     }
-    @Override
-    public void createUsersTable() {
-
-    }
-
-    @Override
-    public void dropUsersTable() {
-
-    }
-
-    @Override
-    public void saveUser(String name, String lastName, byte age) {
-
-    }
 
     @Override
     public void saveUser(User user) {
@@ -42,13 +28,8 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public List<User> getAllUsers() {
-        return entityManager.createQuery("SELECT u FROM User u ORDER BY u.lastName ASC")
+        return entityManager.createQuery("SELECT u FROM User u ORDER BY u.lastName ASC", User.class)
                 .getResultList();
-    }
-
-    @Override
-    public void cleanUsersTable() {
-
     }
 
     @Override

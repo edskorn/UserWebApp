@@ -13,10 +13,14 @@ import web.service.UserService;
 import java.util.List;
 
 @Controller
-public class HelloController {
+public class UserController {
+
+	private UserService userService;
 
 	@Autowired
-	private UserService userService;
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
 
 	@GetMapping(value = "/")
 	public String printWelcome(ModelMap model) {
@@ -49,24 +53,4 @@ public class HelloController {
 		return "redirect:/";
 	}
 
-
-
-//	@GetMapping(value = "/")
-//	public String askUser(ModelMap model) {
-//		model.addAttribute("user", new User());
-//		return "ask-user";
-//	}
-//
-//	@GetMapping(value = "/showDetails")
-//	public String showDetails(@ModelAttribute("user") User user) {
-//		//model.addAttribute("showName", usrName);
-//		user.setName("Mr. " + user.getName());
-//		return "show-details";
-//	}
-//	@GetMapping(value = "/showDetails")
-//	public String showDetails(@RequestParam(name = "userName") String usrName, ModelMap model) {
-//		model.addAttribute("showName", usrName);
-//		return "show-details";
-//	}
-	
 }

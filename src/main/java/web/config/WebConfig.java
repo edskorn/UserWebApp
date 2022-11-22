@@ -31,12 +31,16 @@ import java.util.Properties;
 @ComponentScan("web")
 public class WebConfig implements WebMvcConfigurer {
 
-    @Autowired
     private Environment env;
     private final ApplicationContext applicationContext;
 
     public WebConfig(ApplicationContext applicationContext) {
         this.applicationContext = applicationContext;
+    }
+
+    @Autowired
+    public void setEnv(Environment env) {
+        this.env = env;
     }
 
     @Bean

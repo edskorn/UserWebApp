@@ -10,25 +10,12 @@ import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
-    @Autowired
+
     private UserDao userDao;
 
-    @Override
-    @Transactional
-    public void createUsersTable() {
-        userDao.createUsersTable();
-    }
-
-    @Override
-    @Transactional
-    public void dropUsersTable() {
-        userDao.dropUsersTable();
-    }
-
-    @Override
-    @Transactional
-    public void saveUser(String name, String lastName, byte age) {
-        userDao.saveUser(name, lastName, age);
+    @Autowired
+    public void setUserDao(UserDao userDao) {
+        this.userDao = userDao;
     }
 
     @Override
@@ -47,12 +34,6 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public List<User> getAllUsers() {
         return userDao.getAllUsers();
-    }
-
-    @Override
-    @Transactional
-    public void cleanUsersTable() {
-        userDao.cleanUsersTable();
     }
 
     @Override
