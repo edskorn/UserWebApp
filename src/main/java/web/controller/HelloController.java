@@ -43,6 +43,12 @@ public class HelloController {
 		return "add-user";
 	}
 
+	@RequestMapping(value = "/deleteUser")
+	public String deleteUser(@RequestParam("userId") int userId){
+		userService.removeUserById(userId);
+		return "redirect:/";
+	}
+
 
 
 //	@GetMapping(value = "/")
