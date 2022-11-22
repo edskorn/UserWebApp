@@ -9,6 +9,26 @@
             color: #276291;
 
         }
+        input[type="button"] {
+            cursor: auto;
+            text-align: center;
+            background: #276291;
+            color: white;
+            padding: 10px 20px;
+            border-width: 0px;
+            font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+            font-size: 14px;
+        }
+        input[type="submit"] {
+            cursor: auto;
+            text-align: center;
+            background: #276291;
+            color: white;
+            padding: 10px 20px;
+            border-width: 0px;
+            font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+            font-size: 14px;
+        }
         table {
             font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
             font-size: 14px;
@@ -45,5 +65,7 @@
         <td th:text="${user.getAge()}"></td>
     </tr>
 </table>
+<br>
+<input type="button" value="Добавить" onclick="window.location.href = 'addUser'">
 </body>
 </html>

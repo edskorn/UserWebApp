@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
 import web.model.User;
 import web.service.UserService;
 
@@ -22,6 +23,20 @@ public class HelloController {
 		model.addAttribute("allUsers", users);
 		return "index";
 	}
+
+	@RequestMapping(value = "/addUser")
+	public String addUser(ModelMap model){
+		model.addAttribute("user", new User());
+		return "add-user";
+	}
+
+	@RequestMapping(value = "/saveUser")
+	public String saveUser(@ModelAttribute("user") User user){
+		userService.saveUser(user.getName(), user.getLastName(), user.getAge());
+		return "redirect:/";
+	}
+
+
 
 //	@GetMapping(value = "/")
 //	public String askUser(ModelMap model) {
