@@ -1,14 +1,49 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en" xmlns:form="http://www.springframework.org/tags/form">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>Пользователи</title>
+    <style>
+        h1 {
+            font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+            color: #276291;
+
+        }
+        table {
+            font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+            font-size: 14px;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        th:first-child, td:first-child {
+            text-align: left;
+            padding: 10px 20px;
+        }
+        th, td {
+            background: #4b89be;
+            color: white;
+            padding: 10px 50px;
+            border-style: solid;
+            border-width: 0 1px 1px 0;
+            border-color: white;
+        }
+    </style>
 </head>
 <body>
-<div>
-    <th:block th:each="user : ${allUsers}">
-        <h1 th:text="${user.getName()}"></h1>
-    </th:block>
-</div>
+<H1>Пользователи</H1>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Фамилия</th>
+        <th>Имя</th>
+        <th>Возраст</th>
+    </tr>
+    <tr th:each="user : ${allUsers}">
+        <td th:text="${user.getId()}"></td>
+        <td th:text="${user.getLastName()}"></td>
+        <td th:text="${user.getName()}"></td>
+        <td th:text="${user.getAge()}"></td>
+    </tr>
+</table>
 </body>
 </html>

@@ -16,25 +16,25 @@ public class HelloController {
 	@Autowired
 	private UserService userService;
 
-	@GetMapping(value = "/hello")
+	@GetMapping(value = "/")
 	public String printWelcome(ModelMap model) {
 		List<User> users = userService.getAllUsers();
 		model.addAttribute("allUsers", users);
 		return "index";
 	}
 
-	@GetMapping(value = "/")
-	public String askUser(ModelMap model) {
-		model.addAttribute("user", new User());
-		return "ask-user";
-	}
-
-	@GetMapping(value = "/showDetails")
-	public String showDetails(@ModelAttribute("user") User user) {
-		//model.addAttribute("showName", usrName);
-		user.setName("Mr. " + user.getName());
-		return "show-details";
-	}
+//	@GetMapping(value = "/")
+//	public String askUser(ModelMap model) {
+//		model.addAttribute("user", new User());
+//		return "ask-user";
+//	}
+//
+//	@GetMapping(value = "/showDetails")
+//	public String showDetails(@ModelAttribute("user") User user) {
+//		//model.addAttribute("showName", usrName);
+//		user.setName("Mr. " + user.getName());
+//		return "show-details";
+//	}
 //	@GetMapping(value = "/showDetails")
 //	public String showDetails(@RequestParam(name = "userName") String usrName, ModelMap model) {
 //		model.addAttribute("showName", usrName);
